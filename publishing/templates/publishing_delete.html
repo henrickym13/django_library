@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Livraria - Deletar Editora
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h3 class="display-4">Deletar Editora</h3>
+
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text">Tem certeza de que deseja excluir a editora <strong>{{ object.name }}</strong>?</p>
+
+        <form method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">Deletar</button>
+        </form>
+        
+        <a href="{% url 'publishing_list' %}" class="btn btn-secondary mt-3">
+            Cancelar e Voltar para a Lista de Editoras</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
