@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'supplier',
     'publishing',
+    'category',
 ]
 
 MIDDLEWARE = [

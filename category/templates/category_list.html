@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Livraria - Editoras
+    Livraria - Gêneros
 {% endblock %}
 
 {% block content %}
 
     <div class="row mb-3">
         <div class="col-md-6">
-            <form method="get" action="{% url 'publishing_list' %}">
+            <form method="get" action="{% url 'category_list' %}">
                 <div class="input-group">
                     <input type="text" class="form-control" name="name" placeholder="Nome" value="{{ request.GET.name }}">
                     <button type="submit" class="btn btn-primary">
@@ -18,8 +18,8 @@
             </form>
         </div>
         <div class="col-md-6">
-            <a href="{% url 'publishing_create' %}" class="btn btn-success float-end">
-                <i class="bi bi-plus"></i> Nova Editora
+            <a href="{% url 'category_create' %}" class="btn btn-success float-end">
+                <i class="bi bi-plus"></i> Novo Gênero
             </a>
         </div>
     </div>
@@ -30,28 +30,25 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-                {% for publishing in publishers %}
+                {% for category in categories %}
                     <tr>
                         <td>
-                            <a href="{% url 'publishing_detail' publishing.id %}" class="text-primary fw-semibold">
-                                {{ publishing.id }}
+                            <a href="{% url 'category_detail' category.id %}" class="text-primary fw-semibold">
+                                {{ category.id }}
                             </a>
                         </td>
-                        <td>{{ publishing.name }}</td>
-                        <td>{{ publishing.description }}</td>
+                        <td>{{ category.name }}</td>
                         <td>
-                            <a href="{% url 'publishing_detail' publishing.id %}" class="btn btn-info btn-sm">
+                            <a href="{% url 'category_detail' category.id %}" class="btn btn-info btn-sm">
                                 <i class="bi bi-eye"></i>
                             </a>
-                            <a href="{% url 'publishing_update' publishing.id %}" class="btn btn-warning btn-sm">
+                            <a href="{% url 'category_update' category.id %}" class="btn btn-warning btn-sm">
                                 <i class="bi bi-pencil"></i>
                             </a>
-                            <a href="{% url 'publishing_delete' publishing.id %}" class="btn btn-danger btn-sm btn-delete">
+                            <a href="{% url 'category_delete' category.id %}" class="btn btn-danger btn-sm btn-delete">
                                 <i class="bi bi-trash"></i>
                             </a>
                         </td>

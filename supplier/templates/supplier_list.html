@@ -38,7 +38,7 @@
                 {% for supplier in suppliers %}
                     <tr>
                         <td>
-                            <a href="#" class="text-primary fw-semibold">
+                            <a href="{% url 'supplier_detail' supplier.id %}" class="text-primary fw-semibold">
                                 {{ supplier.id }}
                             </a>
                         </td>

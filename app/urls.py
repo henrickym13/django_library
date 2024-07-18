@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('', include('supplier.urls')),
     path('', include('publishing.urls')),
+    path('', include('category.urls')),
 ]

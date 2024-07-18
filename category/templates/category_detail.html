@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Livraria - Gênero
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h3 class="display-4">Gênero</h3>
+
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{ object.name }}</h3>
+      </div>
+    </div>
+
+    <a href="{% url 'category_list' %}" class="btn btn-secondary mt-3">Voltar para a Lista de Gênero</a>
+  </div>
+{% endblock %}
