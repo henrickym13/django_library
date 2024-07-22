@@ -8,4 +8,6 @@ urlpatterns = [
     path('', include('supplier.urls')),
     path('', include('publishing.urls')),
     path('', include('category.urls')),
+    path('', include('author.urls')),
+    path('', include('book.urls')),
 ]

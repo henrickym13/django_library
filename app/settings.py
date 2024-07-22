@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'supplier',
     'publishing',
     'category',
+    'author',
+    'book',
 ]
 
 MIDDLEWARE = [

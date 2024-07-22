@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Livraria - Gêneros
+    Livraria - Autores
 {% endblock %}
 
 {% block content %}
 
     <div class="row mb-3">
         <div class="col-md-6">
-            <form method="get" action="{% url 'category_list' %}">
+            <form method="get" action="{% url 'author_list' %}">
                 <div class="input-group">
                     <input type="text" class="form-control" name="name" placeholder="Nome" value="{{ request.GET.name }}">
                     <button type="submit" class="btn btn-primary">
@@ -18,8 +18,8 @@
             </form>
         </div>
         <div class="col-md-6">
-            <a href="{% url 'category_create' %}" class="btn btn-success float-end">
-                <i class="bi bi-plus"></i> Novo Gênero
+            <a href="{% url 'author_create' %}" class="btn btn-success float-end">
+                <i class="bi bi-plus"></i> Novo Autor
             </a>
         </div>
     </div>
@@ -34,22 +34,22 @@
                 </tr>
             </thead>
             <tbody>
-                {% for category in categories %}
+                {% for author in authors %}
                     <tr>
                         <td>
-                            <a href="{% url 'category_detail' category.id %}" class="text-primary fw-semibold">
-                                {{ category.id }}
+                            <a href="{% url 'author_detail' author.id %}" class="text-primary fw-semibold">
+                                {{ author.id }}
                             </a>
                         </td>
-                        <td>{{ category.name }}</td>
+                        <td>{{ author.name }}</td>
                         <td>
-                            <a href="{% url 'category_detail' category.id %}" class="btn btn-info btn-sm">
+                            <a href="{% url 'author_detail' author.id %}" class="btn btn-info btn-sm">
                                 <i class="bi bi-eye"></i>
                             </a>
-                            <a href="{% url 'category_update' category.id %}" class="btn btn-warning btn-sm">
+                            <a href="{% url 'author_update' author.id %}" class="btn btn-warning btn-sm">
                                 <i class="bi bi-pencil"></i>
                             </a>
-                            <a href="{% url 'category_delete' category.id %}" class="btn btn-danger btn-sm btn-delete">
+                            <a href="{% url 'author_delete' author.id %}" class="btn btn-danger btn-sm btn-delete">
                                 <i class="bi bi-trash"></i>
                             </a>
                         </td>
