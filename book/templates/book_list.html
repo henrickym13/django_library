@@ -5,15 +5,21 @@ Livraria - Livros
 {% endblock %}
 
 {% block content %}
+{% include 'components/_book_metrics.html' %}
+
+    <div class="mb-4"></div>
+
 <div class="row mb-3">
-    <div class="col-md-6">
+    <div class="col-md-8">
         <form method="get" action="{% url 'book_list' %}">
             <div class="input-group">
                 <input type="text" class="form-control" name="title" placeholder="Nome" value="{{ request.GET.title }}">
                 <input type="text" class="form-control" name="isbn_10" placeholder="ISBN 10"
-                    value="{{ request.GET.isbn_10}}"><p></p>
+                    value="{{ request.GET.isbn_10}}">
                 <input type="text" class="form-control" name="isbn_13" placeholder="ISBN 13"
                     value="{{ request.GET.isbn_13}}">
+                    <input type="text" class="form-control" name="author" placeholder="Autor"
+                    value="{{ request.GET.author }}">
                 <input type="text" class="form-control" name="publishing" placeholder="Editora"
                     value="{{ request.GET.publishing }}">
                 <input type="text" class="form-control" name="supplier" placeholder="Fornecedor"
@@ -24,7 +30,7 @@ Livraria - Livros
             </div>
         </form>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <a href="{% url 'book_create' %}" class="btn btn-success float-end">
             <i class="bi bi-plus"></i> Novo Livro
         </a>
@@ -40,10 +46,11 @@ Livraria - Livros
                 <th>Gênero</th>
                 <th>Editora</th>
                 <th>Fornecedor</th>
+                <th>Autor</th>
                 <th>ISBN 10</th>
                 <th>ISBN 13</th>
-                <th>P. de Custo</th>
-                <th>P. de Venda</th>
+                <th>P. Custo</th>
+                <th>P. Venda</th>
                 <th>Qtd</th>
                 <th>Ações</th>
             </tr>
@@ -52,7 +59,7 @@ Livraria - Livros
             {% for book in books %}
             <tr>
                 <td>
-                    <a href="#" class="text-primary fw-semibold">
+                    <a href="{% url 'book_detail' book.id %}" class="text-primary fw-semibold">
                         {{ book.id }}
                     </a>
                 </td>
@@ -60,16 +67,17 @@ Livraria - Livros
                 <td>{{ book.category }}</td>
                 <td>{{ book.publishing }}</td>
                 <td>{{ book.supplier }}</td>
+                <td>{{ book.author }}</td>
                 <td>{{ book.isbn_10 }}</td>
                 <td>{{ book.isbn_13 }}</td>
                 <td>{{ book.cost_price }}</td>
                 <td>{{ book.selling_price }}</td>
                 <td>{{ book.quantity }}</td>
                 <td>
-                    <a href="#" class="btn btn-info btn-sm">
+                    <a href="{% url 'book_detail' book.id %}" class="btn btn-info btn-sm">
                         <i class="bi bi-eye"></i>
                     </a>
-                    <a href="#" class="btn btn-warning btn-sm">
+                    <a href="{% url 'book_update' book.id %}" class="btn btn-warning btn-sm">
                         <i class="bi bi-pencil"></i>
                     </a>
                     <a href="{% url 'book_delete' book.id %}" class="btn btn-danger btn-sm btn-delete">

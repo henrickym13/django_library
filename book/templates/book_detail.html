@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Livraria - Detalhe do Livro
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h3 class="display-4">Detalhes do Livro</h3>
+
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{ object.title }}</h3>
+        <p class="card-text">Gênero: {{ object.category }}</p>
+        <p class="card-text">Editora: {{ object.publishing }}</p>
+        <p class="card-text">Fornecedor: {{ object.supplier }}</p>
+        <p class="card-text">Autor: {{ object.author }}</p>
+        <p class="card-text">ISBN 10: <strong>{{ object.isbn_10 }}</strong></p>
+        <p class="card-text">ISBN 13: <strong>{{ object.isbn_13 }}</strong></p>
+        <p class="card-text">Preço de Custo: <strong>R$ {{ object.cost_price }}</strong></p>
+        <p class="card-text">Preço de Venda: <strong>R$ {{ object.selling_price }}</strong></p>
+        <p class="card-text">Quantidade em Estoque: <strong>{{ object.quantity }}</strong></p>
+      </div>
+    </div>
+
+    <a href="{% url 'book_list' %}" class="btn btn-secondary mt-3">Voltar para a Lista de Livros</a>
+  </div>
+{% endblock %}
