@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'category',
     'author',
     'book',
+    'inflow',
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,7 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from . import models, forms
+from app import metrics
 
 
 # Create your views here.
@@ -34,6 +35,10 @@ class BookListView(ListView):
         
         return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['book_metrics'] = metrics.get_book_metrics()
+        return context
 
 class BookCreateView(CreateView):
     model = models.Book

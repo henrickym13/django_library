@@ -7,7 +7,7 @@ Livraria - Livros
 {% block content %}
 {% include 'components/_book_metrics.html' %}
 
-    <div class="mb-4"></div>
+<div class="mb-4"></div>
 
 <div class="row mb-3">
     <div class="col-md-8">
@@ -18,7 +18,7 @@ Livraria - Livros
                     value="{{ request.GET.isbn_10}}">
                 <input type="text" class="form-control" name="isbn_13" placeholder="ISBN 13"
                     value="{{ request.GET.isbn_13}}">
-                    <input type="text" class="form-control" name="author" placeholder="Autor"
+                <input type="text" class="form-control" name="author" placeholder="Autor"
                     value="{{ request.GET.author }}">
                 <input type="text" class="form-control" name="publishing" placeholder="Editora"
                     value="{{ request.GET.publishing }}">
