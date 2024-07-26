@@ -2,6 +2,9 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from . import models, forms
 from app import metrics
+from author.models import Author
+from publishing.models import Publishing
+from supplier.models import Supplier
 
 
 # Create your views here.
@@ -27,18 +30,22 @@ class BookListView(ListView):
         if isbn_13:
             queryset = queryset.filter(isbn_13__icontains=isbn_13)
         if author:
-            queryset = queryset.filter(author__icontains=author)
+            queryset = queryset.filter(author__id=author)
         if publishing:
-            queryset = queryset.filter(publishing__icontains=publishing)
+            queryset = queryset.filter(publishing__id=publishing)
         if supplier:
-            queryset = queryset.filter(supplier__icontains=supplier)
+            queryset = queryset.filter(supplier__id=supplier)
         
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['book_metrics'] = metrics.get_book_metrics()
+        context['authors'] = Author.objects.all()
+        context['publishies'] = Publishing.objects.all()
+        context['suppliers'] = Supplier.objects.all()
         return context
+
 
 class BookCreateView(CreateView):
     model = models.Book
