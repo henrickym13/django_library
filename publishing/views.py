@@ -1,11 +1,11 @@
-from django.db.models.query import QuerySet
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from . import models, forms
 
 
 # Create your views here.
-class PublishingListView(ListView):
+class PublishingListView(LoginRequiredMixin, ListView):
     model = models.Publishing
     template_name = 'publishing_list.html'
     context_object_name = 'publishers'
@@ -21,26 +21,26 @@ class PublishingListView(ListView):
         return queryset
 
 
-class PublishingCreateView(CreateView):
+class PublishingCreateView(LoginRequiredMixin, CreateView):
     model = models.Publishing
     template_name = 'publishing_create.html'
     form_class = forms.PublishingForm
     success_url = reverse_lazy('publishing_list')
 
 
-class PublishingDetailView(DetailView):
+class PublishingDetailView(LoginRequiredMixin, DetailView):
     model = models.Publishing
     template_name = 'publishing_detail.html'
 
 
-class PublishingUpdateView(UpdateView):
+class PublishingUpdateView(LoginRequiredMixin, UpdateView):
     model = models.Publishing
     template_name = 'publishing_update.html'
     form_class = forms.PublishingForm
     success_url = reverse_lazy('publishing_list')
 
 
-class PublishingDeleteView(DeleteView):
+class PublishingDeleteView(LoginRequiredMixin, DeleteView):
     model = models.Publishing
     template_name = 'publishing_delete.html'
     success_url = reverse_lazy('publishing_list')
